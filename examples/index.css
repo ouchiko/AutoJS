@@ -1,0 +1,53 @@
+body { margin: 0; padding: 0; }
+.red-backing {
+    background:#FF0000;
+    color:#FFF;
+}
+.heading { padding: 20px; background: #444; color: #FFF; font-family: Helvetica; margin-bottom: 10px;}
+.loop-containers {
+    margin-bottom: 4px;
+    font-family: Helvetica;
+    font-size: 15px;
+    color: #444;
+    margin-left: 10px;
+}
+.subset {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #a5a5a5;
+}
+.subset div {
+    margin-bottom: 5px;
+}
+.loop-containers {
+    margin: 20px;
+}
+
+.button {
+    background: #444;
+    color:#FFF;
+    border:none;
+    border-radius: 3px;
+    padding: 10px;
+}
+.entry {
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+.entry-head {
+    margin-top: 20px;
+}
+.foot {
+    position:fixed;
+    bottom:0;
+    padding: 10px;
+    background:#000;
+    color:#FFF;
+    text-align:center;
+    width: 100%;
+}
+.container-top {margin-bottom: 50px;}

@@ -1,0 +1,8 @@
+loop {
+    display: none;
+}
+
+.dynanmic-content-label {
+    background-color: #FF0000;
+    color: #FFF;
+}

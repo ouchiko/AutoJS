@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+        <script type="text/javascript" src="../build/app.js"></script>
+        <script>
+            /**
+             * An example implementation of autojs.
+             * Add some data, change a few things, props are bi-directional.
+             * You can edit them and render on your own or use the data
+             * method to automatically add & render.
+             */
+            window.addEventListener("load",function() {
+                // Self define props.
+                props['login.name'] = "Mike Smith";
+                window.autojs.render();
+
+                // Add our information and auto render.
+                window.autojs.data("login.name", "Joe Bloggs", "write");
+
+                // Lets add some more.
+                var mynames = [
+                    {'firstname': 'Bill', 'lastname': 'Gates'},
+                    {'firstname': 'Steve', 'lastname': 'Jobs'}
+                ];
+                window.autojs.data("names", mynames, "write");
+
+                // Lets highlight what we've done so far, this will demonstrate
+                // the button events which append and rewrite.
+                var elements = document.querySelectorAll(".subset .myname");
+                for (var i=0; i<elements.length; i++) {
+                    elements[i].classList.add("red-backing");
+                }
+
+                // This button will append a new item to the last list and
+                // rewrite the entire first list.
+                var button_add_new_list_item = document.querySelector(".add-new-list-item");
+                button_add_new_list_item.addEventListener("click", function() {
+                    mynames.push({'firstname': 'Barak', 'lastname': 'Obama'});
+                    window.autojs.data("names", mynames, "write");
+                });
+
+            });
+        </script>
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <div class="container-top">
+            <div class="heading">
+                <div class="title">Welcome <span data-state="update" data-id="login.name" data-pointer="login.name"></span>,</div>
+            </div>
+            <div class="loop-containers">
+                List one, updates all items on render:
+                <div class="fully-updated-with-each-render-list subset" data-id="name_list"></div>
+
+                List two, appends items on render, if new:
+                <div class="appended-list-based-on-key subset" data-id="name_list_key"></div>
+
+                <div><button class="button add-new-list-item">Add new item to list</button></div>
+                <div class="entry-head">
+                    <input type="text" class="entry" data-id="change.name.input" data-pointer="login.name" value=""/>
+                    <button class="button" data-action="change.name.input">Change name</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="foot">Copyright &copy; ACME INC, <span data-state="update" data-id="login.name" data-pointer="login.name"></span> - Click for more info</div>
+
+        <autojs>
+            <loop data-state="update" data-id="names--of-people" data-pointer="names" data-target="name_list">
+                <div class="myname" key="{key}">{firstname} is {lastname}</div>
+            </loop>
+
+            <loop data-state="update-with-key" data-id="names--of-people" data-pointer="names" data-target="name_list_key">
+                <div class="myname" key="{key}">{firstname} is {lastname}</div>
+            </loop>
+        </autojs>
+
+    </body>
+</html>
